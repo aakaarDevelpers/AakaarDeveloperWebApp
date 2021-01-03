@@ -1,0 +1,20 @@
+Navbar
+    -Home
+    -About
+    -Services
+    -Contact
+    -Social Media (Optional)
+
+Jumbotron
+    -Company name
+    -Details
+
+Projects
+
+Services
+    -Youtube
+    -Freelancer
+    -Github
+
+Contact
+Footer

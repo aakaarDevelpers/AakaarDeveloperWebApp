@@ -1,0 +1,67 @@
+{% extends 'my_admin/base.html' %}
+{% load static %}
+{% block styles_tag %}
+<link rel="stylesheet" href="{% static 'css/my_admin.css' %}">
+{% endblock styles_tag %}
+
+{% block content %}
+<br><br>
+<div class="display_content content">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" id="card-1">
+                <div class="card-body">
+                    <h5 class="card-title">Total Users</h5>
+                    <p class="card-text">100</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-2">
+                <div class="card-body">
+                    <h5 class="card-title">Total Projects</h5>
+                    <p class="card-text">1200</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" id="card-3">
+                <div class="card-body">
+                    <h5 class="card-title">Total Blogs</h5>
+                    <p class="card-text">500</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="users_tables mt-5">
+        <h3 class="text-primary font-weight-bold">USERS</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">First-Name</th>
+                    <th scope="col">Last-Name</th>
+                    <th scope="col">Last_Join</th>
+                    <th scope="col">Join_date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.last_login }}</td>
+                    <td>{{ user.date_joined }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

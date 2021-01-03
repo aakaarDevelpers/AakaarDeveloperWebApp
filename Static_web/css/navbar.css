@@ -1,0 +1,10 @@
+.navbar {
+    /* background: linear-gradient(to right, rgb(42, 42, 143), rgb(165, 6, 86)); */
+    background: linear-gradient(to right, rgb(42, 42, 143), rgb(102, 7, 126));
+    box-shadow:  5px 5px 10px #b7b7b7, 
+             -5px -5px 10px #ffffff;
+}
+
+.navbar-toggler {
+    color: #fff;
+}
