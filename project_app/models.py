@@ -24,6 +24,9 @@ class Project_image(models.Model):
     project_title = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to='projects/project_images/', null=True, blank=True)
 
+    def __str__(self):
+        return f'{self.project_title}'
+
 class Rating(models.Model):
     project_title = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=True)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)

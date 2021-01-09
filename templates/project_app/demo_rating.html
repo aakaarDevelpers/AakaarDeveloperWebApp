@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>CodePen - User Rating Module</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:500,300' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+  
+<style>
+
+h1 {
+  color: #000;
+  font-size: 300%;
+  line-height: 1em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.25);
+}
+
+.fa {
+  font-weight: 300;
+  font-family: 'FontAwesome', 'Roboto', sans-serif; }
+
+.rating {
+  position: relative;
+  display: inline-block;
+  min-width: 2.25em;
+  padding: 0.25em;
+  margin: 1em;
+  color: rgba(0,0,0,0.3);
+  font-size: 300%;
+  background: #eee;
+  box-shadow:
+    0 0 0 0.5em #fff,
+    0 1.5em 0 0.5em #fff,
+    0 2em 0.5em 0.25em rgba(0,0,0,0.8);
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+.rating.hide { color: rgba(0,0,0,0); }
+
+.rating:after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  width: 0; height: 0;
+  margin-left: -0.25em;
+  border: 0.25em solid transparent;
+  border-top-color: #eee;
+}
+
+.rating:before {
+  position: absolute;
+  top: 100%; left: 0;
+  width: 100%;
+  padding: 0.25em;
+  margin-top: 0.156em;
+  color: #eb0;
+  font-size: 120%;
+  text-align: center;
+}
+
+.user-rating {
+  position: absolute; z-index: 1;
+  top: 100%; left: 50%;
+  width: 6.55em;
+  padding: 0.4em;
+  font-size: 120%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.8);
+  opacity: 1;
+  transform-origin: 50%;
+  transform: translateX(-50%) scale(1);
+  transition: all 300ms cubic-bezier(.07,.77,.46,1.47);
+}
+
+.user-rating.animate {
+	opacity: 0;
+	transform: translateX(-50%) scale(0);
+}
+
+.user-rating li {
+  float: right;
+  width: 1.15em;
+  color: #ddd;
+}
+
+.user-rating i { transition: all 100ms cubic-bezier(.07,.77,.46,1.47); }
+
+.user-rating li:hover,
+.user-rating li:hover ~ li { color: #eb0; }
+.user-rating li:hover i,
+.user-rating li:hover ~ li i { transform: scale(1.1); }
+.user-rating li:active i,
+.user-rating li:active ~ li i { transform: scale(0.9) }
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <h1>User Rating</h1>
+<i class="rating fa fa-star">4.5</i>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script id="rendered-js" >
+// Globals
+var rating = $('.rating');
+
+// Create rating popup
+rating.on('click', function (e) {
+  var self = $(this),
+  userRating = $('<ul />').attr('class', 'user-rating animate');
+
+  // Create stars if not already on page
+  if (!self.find('.user-rating').length) {
+    for (var i = 0; i < 5; i++) {if (window.CP.shouldStopExecution(0)) break;
+      userRating.prepend('<li data-rating="' + (i + 1) + '"><i class="fa fa-star"></i></li>');
+    }window.CP.exitedLoop(0);;
+
+    // Add stars to page
+    userRating.appendTo(self);
+    setTimeout(function () {
+      userRating.removeClass('animate');
+    }, 50);
+  };
+
+  e.preventDefault();
+  e.stopPropagation();
+});
+
+// Select rating
+rating.on('click', '.user-rating li', function () {
+  var self = $(this),
+  rateVal = self.data('rating');
+
+  setTimeout(function () {
+    removeRating(rateVal);
+  }, 300);
+});
+
+// Remove rating popup
+function removeRating(rateVal) {
+  rating.children('.user-rating').addClass('animate');
+  setTimeout(function () {
+    rating.children('.user-rating').remove();
+  }, 350);
+
+  if (rateVal) {
+    // Ajax submit here
+
+    rating.addClass('hide');
+    setTimeout(function () {
+      rating.text(rateVal).removeClass('hide');
+    }, 150);
+  };
+};
+
+$(document).on('click', function () {
+  if (rating.children('.user-rating').length) {
+    removeRating();
+  };
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+
+  <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-bb9a2ba1f03f6147732cb3cd52ac86c6b24524aa87a05ed0b726f11e46d7e277.js"></script>
+</body>
+
+</html>
+ 

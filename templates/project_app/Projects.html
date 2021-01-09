@@ -38,12 +38,14 @@
 
   <link rel="canonical" href="https://themes.materializecss.com/pages/demo">
 
+  <link rel="stylesheet" href="{% static 'css/bootstrap-4-utilities.min.css' %}">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
+  <link rel="stylesheet" href="{% static 'css/project.css' %}">
 </head>
 
 <body>
@@ -75,19 +77,12 @@
         <li><a href="#">AI</a></li>
         <li><a href="#">IOT</a></li>
         <li><a href="#">Deep learning</a></li>
-
       </ul>
-
-
 
       <div class="nav-header de">
         <h1>We have done all this <br> Projects for you</h1>
         <div class="">All Types Of Projects</div>
       </div>
-
-      <!-- <div class="center de">
-        <a class="waves-effect waves-light btn   teal lighten-1">SUBSCRIBE</a>
-      </div> -->
 
     </div>
 
@@ -125,10 +120,11 @@
         <div class="d hx hf gu gallery-item gallery-expand ce {{ project.slug }}">
           <div class="gallery-curve-wrapper">
             <a class="gallery-cover gray">
-              <img class="responsive-img" src="{{ project.thumbnail.url }}" alt="placeholder" crossOrigin="anonymous">
+              <img class="responsive-img" src="{{ project.thumbnail.url }}" height="300px" alt="placeholder" crossOrigin="anonymous">
             </a>
             <div class="gallery-header">
-              <span>{{ project.project_title }}</span><i class="material-icons right">access_time</i><span class="right">{{ project.created|date }}</span>
+              <span>{{ project.project_title }}</span><i class="material-icons right">access_time</i><span
+                class="right">{{ project.created|date }}</span>
             </div>
             <div class="gallery-body">
               <div class="title-wrapper">
@@ -160,13 +156,59 @@
                       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
                     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span></code></pre>
 
-              <div class="carousel-wrapper">
+              <div class="carousel-wrapper mb-5">
+                <h5 class="center-align mt-3 mb-3">Project Images : </h5>
                 <div class="t carousel">
-                  <a class="carousel-item" href="#one!">
-                    <img src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-sun.jpg?v=5328726480767926026" crossOrigin="anonymous">
-                  </a>
+                  {% for image in project_images %}
+                    {% if project == image.project_title %}
+                      <a class="carousel-item" href="#one!">
+                        <img src="{{ image.image.url }}" crossOrigin="anonymous" height="300px">
+                      </a>
+                    {% endif %}
+                  {% endfor %}
                 </div>
               </div>
+
+              <!-- Ads Container  -->
+              <div class="container ads"></div>
+              <div class="mt-4">
+                <hr class="new4 mt-4">
+                <div class="row mt-5 center-align">
+                  <div class="col s12 m12 l4 mt-3">
+                    <a href="#" class="btn btn-small waves-effect waves-light blue accent-4">Demo</a>
+                  </div>
+                  <div class="col s12 m12 l4 mt-3">
+                    <a href="#" class="btn btn-small waves-effect waves-light pink lighten-1">Subscribe</a>
+                  </div>
+                  <div class="col s12 m12 l4 mt-3">
+                    <a href="#" class="btn  waves-effect waves-light green accent-4 btn-small">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="comment_form" style="padding: 2rem">
+                <div class="row">
+                  <div class="input-field col s12 m12 l12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label class="active" for="first_name2">Comment : </label>
+                    <button type="submit" class="btn cyan accent-4">Add Comment</button>
+                  </div>
+                </div>
+                <div class="comment-block mt-3"><img class="comment-image" src="https://avatars0.githubusercontent.com/u/12679778?v=4&amp;s=90"/>
+                  <div class="comment-dialog">
+                    <h5 class="username">Aakash Panda</h5>
+                    <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum repudiandae at et molestias nisi earum quo quas aliquam voluptas nulla!</p>
+                  </div>
+                </div>
+
+                <div class="comment-block mt-3"><img class="comment-image" src="https://avatars0.githubusercontent.com/u/12679778?v=4&amp;s=90"/>
+                  <div class="comment-dialog">
+                    <h5 class="username">Motul Sir</h5>
+                    <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum repudiandae at et molestias nisi earum quo quas aliquam voluptas nulla!</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div class="gallery-action">
               <a class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">favorite</i></a>
@@ -180,11 +222,14 @@
 
   </div><!-- /.container -->
 
-
   <!-- Core Javascript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/materialize/0.98.0/js/materialize.min.js"></script>
-  <script src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/gallery.min.opt.js?v=11953282697663548582" crossorigin="anonymous"></script>
+  <script src="//cdn.shopify.com/s/files/1/1775/8583/t/1/assets/gallery.min.opt.js?v=11953282697663548582"
+    crossorigin="anonymous"></script>
+
+  <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+  <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 
 </body>
 
