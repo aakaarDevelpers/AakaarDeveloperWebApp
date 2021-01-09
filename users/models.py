@@ -6,3 +6,6 @@ class Profile(models.Model):
     profile_image = models.ImageField(upload_to='profile/images/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.user.username}'

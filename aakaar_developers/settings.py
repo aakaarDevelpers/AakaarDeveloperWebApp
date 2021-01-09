@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'aakaar.apps.AakaarConfig',
     'users.apps.UsersConfig',
-    'my_admin.apps.MyAdminConfig'
+    'my_admin.apps.MyAdminConfig',
+    'project_app.apps.ProjectAppConfig',
 ]
 
 MIDDLEWARE = [
