@@ -163,7 +163,7 @@
                     <a href="#" class="btn btn-small waves-effect waves-light blue accent-4">Demo</a>
                   </div>
                   <div class="col s12 m12 l4 mt-3">
-                    <a href="#" class="btn btn-small waves-effect waves-light pink lighten-1">Subscribe</a>
+                    <a href="https://www.youtube.com/channel/UCMpZNK_0nNDb2_XrbhvKWEw?sub_confirmation=1" class="btn btn-small waves-effect waves-light pink lighten-1">Subscribe Us</a>
                   </div>
                   <div class="col s12 m12 l4 mt-3">
                     <a href="#" class="btn  waves-effect waves-light green accent-4 btn-small">Buy Now</a>
@@ -171,7 +171,7 @@
                 </div>
               </div>
 
-              {% include 'project_app/demo_rating.html' %}
+              {% include 'project_app/demo_rating.html' with project_title=project.id %}
               
               <div class="comment_form" style="padding: 2rem">
                 <div class="row">

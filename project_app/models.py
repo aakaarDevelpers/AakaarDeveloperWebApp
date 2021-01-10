@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import Profile
+from django.contrib.auth.models import User
 
 class Project(models.Model):
     project_title = models.CharField(max_length=70, null=True, blank=True)
@@ -29,5 +30,5 @@ class Project_image(models.Model):
 
 class Rating(models.Model):
     project_title = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, blank=True)
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     rate = models.IntegerField(null=True, blank=True)

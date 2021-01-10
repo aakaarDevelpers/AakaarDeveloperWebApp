@@ -11,4 +11,4 @@ class Project_imageAdmin(admin.ModelAdmin):
 
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ['project_title', 'user', 'rate']
+    list_display = ['id', 'project_title', 'user', 'rate']

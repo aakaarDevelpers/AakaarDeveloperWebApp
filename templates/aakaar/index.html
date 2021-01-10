@@ -56,23 +56,22 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#servicediv">Service</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#plans">Price</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Services
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="#">Pricing</a>
+                              <a class="dropdown-item" href="#">Projects</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#team">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'show_projects' %}">Projects</a>
+                            <a class="nav-link" href="{% url 'blog_posts' %}">Blogs</a>
                         </li>
-
                         {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#newsletter">Blogs</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#contact">Contact</a>
                             </li>
