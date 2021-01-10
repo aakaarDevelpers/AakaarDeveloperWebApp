@@ -1,58 +1,58 @@
-// Globals
-var rating = $('.rating');
+$(document).ready(function () {
 
-// Create rating popup
-rating.on('click', function (e) {
-  var self = $(this),
-  userRating = $('<ul />').attr('class', 'user-rating animate');
+  /* 1. Visualizing things on Hover - See next part for action on click */
+  $('#stars li').on('mouseover', function () {
+    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
 
-  // Create stars if not already on page
-  if (!self.find('.user-rating').length) {
-    for (var i = 0; i < 5; i++) {if (window.CP.shouldStopExecution(0)) break;
-      userRating.prepend('<li data-rating="' + (i + 1) + '"><i class="fa fa-star"></i></li>');
-    }window.CP.exitedLoop(0);;
+    // Now highlight all the stars that's not after the current hovered star
+    $(this).parent().children('li.star').each(function (e) {
+      if (e < onStar) {
+        $(this).addClass('hover');
+      } else
+      {
+        $(this).removeClass('hover');
+      }
+    });
 
-    // Add stars to page
-    userRating.appendTo(self);
-    setTimeout(function () {
-      userRating.removeClass('animate');
-    }, 50);
-  };
+  }).on('mouseout', function () {
+    $(this).parent().children('li.star').each(function (e) {
+      $(this).removeClass('hover');
+    });
+  });
 
-  e.preventDefault();
-  e.stopPropagation();
+
+  /* 2. Action to perform on click */
+  $('#stars li').on('click', function () {
+    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+    var stars = $(this).parent().children('li.star');
+
+    for (i = 0; i < stars.length; i++) {if (window.CP.shouldStopExecution(0)) break;
+      $(stars[i]).removeClass('selected');
+    }window.CP.exitedLoop(0);
+
+    for (i = 0; i < onStar; i++) {if (window.CP.shouldStopExecution(1)) break;
+      $(stars[i]).addClass('selected');
+    }
+
+    // JUST RESPONSE (Not needed)
+    window.CP.exitedLoop(1);var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+    var msg = "";
+    if (ratingValue > 1) {
+      msg = "Thanks! You rated this " + ratingValue + " stars.";
+    } else
+    {
+      msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+    }
+    responseMessage(msg);
+
+  });
+
+
 });
 
-// Select rating
-rating.on('click', '.user-rating li', function () {
-  var self = $(this),
-  rateVal = self.data('rating');
 
-  setTimeout(function () {
-    removeRating(rateVal);
-  }, 300);
-});
-
-// Remove rating popup
-function removeRating(rateVal) {
-  rating.children('.user-rating').addClass('animate');
-  setTimeout(function () {
-    rating.children('.user-rating').remove();
-  }, 350);
-
-  if (rateVal) {
-    // Ajax submit here
-
-    rating.addClass('hide');
-    setTimeout(function () {
-      rating.text(rateVal).removeClass('hide');
-    }, 150);
-  };
-};
-
-$(document).on('click', function () {
-  if (rating.children('.user-rating').length) {
-    removeRating();
-  };
-});
+function responseMessage(msg) {
+  $('.success-box').fadeIn(200);
+  $('.success-box div.text-message').html("<span>" + msg + "</span>");
+}
 //# sourceURL=pen.js

@@ -21,21 +21,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- <script src="Projeccts/Projects_js.js"></script> -->
 
-
-  <style id="shopify-dynamic-checkout-cart">
-    @media screen and (min-width: 750px) {
-      #dynamic-checkout-cart {
-        min-height: 50px;
-      }
-    }
-
-    @media screen and (max-width: 750px) {
-      #dynamic-checkout-cart {
-        min-height: 240px;
-      }
-    }
-  </style>
-
   <link rel="canonical" href="https://themes.materializecss.com/pages/demo">
 
   <link rel="stylesheet" href="{% static 'css/bootstrap-4-utilities.min.css' %}">
@@ -185,6 +170,8 @@
                   </div>
                 </div>
               </div>
+
+              {% include 'project_app/demo_rating.html' %}
               
               <div class="comment_form" style="padding: 2rem">
                 <div class="row">
@@ -231,6 +218,7 @@
   <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
   <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 
+  <script src="{% static 'js/rating.js' %}"></script>
 </body>
 
 </html>
