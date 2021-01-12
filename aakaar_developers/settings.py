@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'my_admin.apps.MyAdminConfig',
     'project_app.apps.ProjectAppConfig',
+    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [

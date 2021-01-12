@@ -9,28 +9,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <link rel="icon" class="rounded-circle" href="{% static 'images/logo-icon.png' %}">
+    <link rel="icon" class="rounded-circle" href="images/logo-icon.png">
 
     <title>AakaarDevelopers</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <!-- font awesome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
-    crossorigin="anonymous" />
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-    
+
     <!-- Blogs Silder links-->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <!-- counter links-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+
 
 </head>
 
@@ -40,7 +43,7 @@
 
     <div class="header" id="topheader">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-            <div class="container text-uppercase p-4" id='container'>
+            <div class="container text-uppercase p-4">
 
 
                 <a class="navbar-brand font-weight-bold text-white" href="#">AakaarDevelopers</a>
@@ -52,69 +55,54 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto justify-content-center">
-                        
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Services
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">Pricing</a>
-                              <a class="dropdown-item" href="#">Projects</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" href="#">Service</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#plans">PRICE</a>
+                                <a class="dropdown-item" href="#">PROJECTS</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">OFFERS</a>
                             </div>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#team">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'blog_posts' %}">Blogs</a>
+                            <a class="nav-link" href="#newsletter">Blogs</a>
                         </li>
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contact</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'logout_user' %}">logout</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#contact">{{ request.user }} Welcome to AakaarDevelopers</a>
-                            </li>
-                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+
                         <!-- login button -->
-                            <li class="nav-item nav-same">
-                                <a href="{% url 'authentication_page' %}" class="login">Sign in</a>
-                            </li>
-                        {% endif %}
+                        <li class="nav-item nav-same">
+                            <a href="#" class="login">Sign in</a>
+                        </li>
+
 
                 </div>
+
+
 
             </div>
         </nav>
-        
+
         <section class="header-section">
-            {% if messages %}
-                <div class="message-center-div">
-                    {% for message in messages %}
-                        {% if message.tags %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                            <strong>Aakaar Developers!</strong> {{ message }}
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% endif %}
             <div class="center-div">
                 <h1 class="font-weight-bold">We are the Web Developers</h1>
                 <p>We Create The World Best Website..</p>
                 <div class="header-buttons">
-                    <a href="#">About Us</a>
+                    <a href="#">AboutUs</a>
                     <a href="#">Contact</a>
                 </div>
             </div>
         </section>
+
 
     </div>
 
@@ -124,10 +112,12 @@
         <div class="container">
             <div class="row">
                 <div class=" extra-div  col-lg-4 col-md-4 col-12">
-                    <a href="https://www.fiverr.com/aakaardeveloper?up_rollout=true">
+                    <a href="#">
                         <i class=" fa-3x fa fa-desktop" aria-hidden="true"></i>
                         <h2>FIVERR</h2>
-                        <p>We are Software Developers, we are pursuing BCA (Bachelor of Computer Application). We Create Frontend and Backend
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore.
+                        </p>
                     </a>
                 </div>
 
@@ -142,10 +132,12 @@
                 </div>
 
                 <div class=" extra-div  col-lg-4 col-md-4 col-12">
-                    <a href="https://github.com/aakaarDevelpers">
+                    <a href="#">
                         <i class=" fa-3x fa fa-github" aria-hidden="true"></i>
                         <h2> GITHUB </h2>
-                        <p>This is Github link of our projects, if you want to refer than just fork it</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore.
+                        </p>
                     </a>
                 </div>
 
@@ -156,17 +148,17 @@
     <!-- *************************   Projects section starts  ************** -->
 
     <!-- Promo Section "Statistics" -->
-    <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+    <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64 call">
         <div class="w3-quarter">
             <span class="counter w3-xxlarge">14</span>+<br>
-            <br>CLIENT
+            <br>CLINT
         </div>
         <div class="w3-quarter">
             <span class="counter w3-xxlarge">55</span>+<br>
             <br>PROJECTS DONE
         </div>
         <div class="w3-quarter">
-            <span class="counter w3-xxlarge">{{ blog_len }}</span>+<br>
+            <span class="counter w3-xxlarge">89</span>+<br>
             <br>BLOGS
         </div>
         <div class="w3-quarter">
@@ -185,7 +177,8 @@
                 WHAT DO WE OFFER
             </h1>
             <p class="text-center">
-                “Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.” – Antoine de Saint-Exupery
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore.
             </p>
         </div>
 
@@ -194,20 +187,19 @@
                 <div class="col-lg-6 col-md-12 col-10 offset-1 offset-lg-0">
 
                     <div class="names my-3">
-                        <h1>Frontend</h1>
+                        <h1>HTML</h1>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
-                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 70%">70%</div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%">100%</div>
                         </div>
                     </div>
 
                     <div class="names my-3">
-                        <h1>Backend</h1>
+                        <h1>CSS</h1>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
                                 role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                                style="width: 80%">80%
-                            </div>
+                                style="width: 80%">80%</div>
                         </div>
                     </div>
 
@@ -215,49 +207,26 @@
                         <h1>JAVASCRIPT</h1>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 70%">70%
-                            </div>
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 70%">70%</div>
                         </div>
                     </div>
 
                     <div class="names my-3">
                         <h1>PYTHON</h1>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
                                 role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                                style="width: 90%">90%
-                            </div>
+                                style="width: 90%">90%</div>
                         </div>
                     </div>
 
                     <div class="names my-3">
                         <h1>DJANGO</h1>
                         <div class="progress" w-75>
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
-                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 90%">90%
-                            </div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 90%">90%</div>
                         </div>
                     </div>
-
-                    <div class="names my-3">
-                        <h1>Machine Learning</h1>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar"
-                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%">50%
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="names my-3">
-                        <h1>Database</h1>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
-                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 60%">60%
-                            </div>
-                        </div>
-                    </div>
-
-
 
                 </div>
 
@@ -267,10 +236,12 @@
                             <i class=" fa-3x fa fa-desktop" aria-hidden="true"></i>
                         </div>
 
-                        <div class="col-lg-10 col-10">
+                        <div class="col-lg-10 col-10 col-width">
+                            <!-- added class="col-width" by perm-->
                             <h2>Website Development</h2>
                             <p>
-                                Web development is the work involved in developing a Web site for the Internet or an intranet. Web development can range from developing a simple single static page of plain text to complex Web-based Internet applications, electronic businesses, and social network services. 
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore.
                             </p>
                         </div>
 
@@ -278,13 +249,15 @@
 
                     <div class="row">
                         <div class="col-lg-2 col-2 service-icons">
-                            <i class=" fa-3x fa fa-graduation-cap" aria-hidden="true"></i>
+                            <i class=" fa-3x fa fa-wifi" aria-hidden="true"></i>
                         </div>
 
-                        <div class="col-lg-10 col-10">
-                            <h2>Machine learning</h2>
+                        <div class="col-lg-10 col-10 col-width">
+                            <!-- added class="col-width" by perm-->
+                            <h2>Digital Marketing</h2>
                             <p>
-                                Machine learning is the study of computer algorithms that improve automatically through experience. It is seen as a subset of artificial intelligence. 
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore.
                             </p>
                         </div>
 
@@ -292,13 +265,15 @@
 
                     <div class="row">
                         <div class="col-lg-2 col-2 service-icons">
-                            <i class=" fa-3x fa fa-magic" aria-hidden="true"></i>
+                            <i class=" fa-3x fa fa-phone" aria-hidden="true"></i>
                         </div>
 
-                        <div class="col-lg-10 col-10">
-                            <h2>Internet of Things</h2>
+                        <div class=" col-lg-10 col-10 col-width">
+                            <!-- added class="col-width" by perm-->
+                            <h2>Supoort 24/7</h2>
                             <p>
-                                The Internet of things describes the network of physical objects—“things”—that are embedded with sensors, software, and other technologies for the purpose of connecting and exchanging data with other devices and systems over the Internet.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore.
                             </p>
                         </div>
 
@@ -315,97 +290,103 @@
     <!-- *************************   Pricing section starts  ************** -->
 
     <!-- Grid -->
-    <div class="w3-row-padding" id="plans">
-        <div class="w3-center w3-padding-64">
-            <h3>Pricing Plans</h3>
-            <p>Choose a pricing plan that fits your needs.</p>
+
+    <div class="price-card-container center" id="plans" style="padding:128px 22px;">
+
+        <!-- Grid -->
+        <div class="w3-row-padding" id="plans">
+            <div class="w3-center w3-padding-64">
+                <h3>Pricing Plans</h3>
+                <p>Choose a pricing plan that fits your needs.</p>
+            </div>
+
+            <div class="w3-third w3-margin-bottom comeUp card">
+                <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+                    <li class="w3-blue w3-xlarge w3-padding-32 card-header header1">Basic</li>
+                    <li class="w3-padding-16"><b>10GB</b> Storage</li>
+                    <li class="w3-padding-16"><b>10</b> Emails</li>
+                    <li class="w3-padding-16"><b>10</b> Domains</li>
+                    <li class="w3-padding-16"><b>Endless</b> Support</li>
+                    <li class="w3-padding-16">
+                        <h2 class="w3-wide money">$ 10</h2>
+                        <span class="w3-opacity">per month</span>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24">
+                        <button class="w3-button w3-blue  w3-padding-large">Sign Up</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w3-third w3-margin-bottom comeUp card">
+                <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+                    <li class="w3-green w3-xlarge w3-padding-32 card-header header1">Pro</li>
+                    <li class="w3-padding-16"><b>25GB</b> Storage</li>
+                    <li class="w3-padding-16"><b>25</b> Emails</li>
+                    <li class="w3-padding-16"><b>25</b> Domains</li>
+                    <li class="w3-padding-16"><b>Endless</b> Support</li>
+                    <li class="w3-padding-16">
+                        <h2 class="w3-wide money">$ 25</h2>
+                        <span class="w3-opacity">per month</span>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24">
+                        <button class="w3-button w3-green w3-padding-large">Sign Up</button>
+
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w3-third w3-margin-bottom comeUp card">
+                <ul class="w3-ul w3-border w3-center w3-hover-shadow">
+                    <li class="w3-red w3-xlarge w3-padding-32 card-header header1">Premium</li>
+                    <li class="w3-padding-16"><b>50GB</b> Storage</li>
+                    <li class="w3-padding-16"><b>50</b> Emails</li>
+                    <li class="w3-padding-16"><b>50</b> Domains</li>
+                    <li class="w3-padding-16"><b>Endless</b> Support</li>
+                    <li class="w3-padding-16 ">
+                        <h2 class="w3-wide money">$ 50</h2>
+                        <span class="w3-opacity">per month</span>
+                    </li>
+                    <li class="w3-light-grey w3-padding-24 cardss">
+                        <button class="w3-button w3-red w3-padding-large">Sign Up</button>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="w3-third w3-margin-bottom comeUp card">
-            <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-                <li class="w3-black w3-xlarge w3-padding-32 card-header">Basic</li>
-                <li class="w3-padding-16"><b>10GB</b> Storage</li>
-                <li class="w3-padding-16"><b>10</b> Emails</li>
-                <li class="w3-padding-16"><b>10</b> Domains</li>
-                <li class="w3-padding-16"><b>Endless</b> Support</li>
-                <li class="w3-padding-16">
-                    <h2 class="w3-wide money">$ 10</h2>
-                    <span class="w3-opacity">per month</span>
-                </li>
-                <li class="w3-light-grey w3-padding-24">
-                    <button class="w3-button w3-green w3-padding-large">Sign Up</button>
-                </li>
-            </ul>
-        </div>
-
-        <div class="w3-third w3-margin-bottom comeUp card">
-            <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-                <li class="w3-dark-grey w3-xlarge w3-padding-32 card-header">Pro</li>
-                <li class="w3-padding-16"><b>25GB</b> Storage</li>
-                <li class="w3-padding-16"><b>25</b> Emails</li>
-                <li class="w3-padding-16"><b>25</b> Domains</li>
-                <li class="w3-padding-16"><b>Endless</b> Support</li>
-                <li class="w3-padding-16">
-                    <h2 class="w3-wide money">$ 25</h2>
-                    <span class="w3-opacity">per month</span>
-                </li>
-                <li class="w3-light-grey w3-padding-24">
-                    <button class="w3-button w3-green w3-padding-large">Sign Up</button>
-                </li>
-            </ul>
-        </div>
-
-        <div class="w3-third w3-margin-bottom comeUp card">
-            <ul class="w3-ul w3-border w3-center w3-hover-shadow">
-                <li class="w3-black w3-xlarge w3-padding-32 card-header">Premium</li>
-                <li class="w3-padding-16"><b>50GB</b> Storage</li>
-                <li class="w3-padding-16"><b>50</b> Emails</li>
-                <li class="w3-padding-16"><b>50</b> Domains</li>
-                <li class="w3-padding-16"><b>Endless</b> Support</li>
-                <li class="w3-padding-16">
-                    <h2 class="w3-wide money">$ 50</h2>
-                    <span class="w3-opacity">per month</span>
-                </li>
-                <li class="w3-light-grey w3-padding-24">
-                    <button class="w3-button w3-green w3-padding-large">Sign Up</button>
-                </li>
-            </ul>
-        </div>
     </div>
 
     <!-- *************************   Team section starts  ************** -->
 
-    
-    <div class="pricing">
-        <div class="container" style="text-align: center; padding:25px">
-            <div class="w3-container" style="padding:128px 16px" id="team">
+    <div class="team_back">
+        <div class="container" style="text-align: center;">
+            <div class="w3-container" style="padding:128px 22px;" id="term">
                 <h3 class="w3-center ca">THE TEAM</h3>
                 <p class="w3-center w3-large ca">The ones who runs this company</p>
                 <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
                     <!--  w3-grayscale  Use This to make image black and White Color -->
-                    <div class="w3-col l6 m12 w3-margin-bottom">
-                        <div class="w3-card">
-                            <img src="{% static 'images/aakash1.PNG' %}" alt="John" style="width:100%; height:300px">
+                    <div class="w3-col l6 m12 w3-margin-bottom ">
+                        <div class="w3-card  cass">
+                            <img src="{% static 'images/aakash1.PNG' %}" class="header2 " alt="Aakash Panda"
+                                style="width:100%; height:300px">
                             <div class="w3-container cal">
                                 <h3>Aakash Panda</h3>
                                 <p class="w3-opacity">Developer & Founder</p>
                                 <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
                                     elementum.</p>
-                                <p><button class="w3-button w3-light-grey w3-block "><i class="fa fa-envelope"></i>
-                                        Contact</button></p>
+                                <p><button class="w3-btn w3-round-xxlarge w3-grey">Contact US</button></p>
                             </div>
                         </div>
                     </div>
-                    <div class="w3-col l6 m12 w3-margin-bottom">
-                        <div class="w3-card">
-                            <img src="{% static 'images/onkar1.PNG' %}" alt="Jane" style="width:100%; height:300px">
+                    <div class="w3-col l6 m12 w3-margin-bottom ">
+                        <div class="w3-card cass">
+                            <img src="{% static 'images/onkar1.PNG' %}" class="header2 alt=" Onkar Nardekar"
+                                style="width:100%; height:300px">
                             <div class="w3-container cal">
                                 <h3>Onkar Nardekar</h3>
                                 <p class="w3-opacity">Founder & Developer</p>
                                 <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque
                                     elementum.</p>
-                                <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i>
-                                        Contact</button></p>
+                                <p><button class="w3-btn w3-round-xxlarge w3-grey">Contact US</button></p>
                             </div>
                         </div>
                     </div>
@@ -415,18 +396,19 @@
 
         </div>
     </div>
-
     <!-- *************************  Contact Section **********************-->
 
-    <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
-        <div class="w3-row">
-            <div class="w3-col m4" style="margin-left:25px;">
+    <div class="w3-container w3-padding-64 w3-theme-l5">
+        <div class="w3-row" id="contact">
+            <div class="my-col m4">
+                <!--style="margin-left:25px;" created for-width class REMOVED  -->
                 <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
                 <h3>Address</h3>
                 <p>Goregaon West, Mumbai-104</p>
                 <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Maharashtra, India</p>
                 <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i> 8369653058/8850219319</p>
-                <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i> AakaarDevelopers23.12.20@gmail.com</p>
+                <p class="e-mail"><i
+                        class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>AakaarDevelopers23.12.20@gmail.com</p>
             </div>
             <div class="w3-col m7">
                 <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="" name="contact-form" method="POST"
@@ -458,7 +440,7 @@
 
 
     <!--************************* NEWSLETTER START ********************************-->
-    <section class="newsletter" id="newsletter">
+    <section class="newsletter " id="newsletter">
         <div class="container headings text-center">
             <h1 class="text-center font-weight-bold ">
                 SUBSCRIBE TO OUR NEWSLETTER
@@ -535,7 +517,7 @@
                 </div>
             </div>
             <div class=" mt-5 text-center ">
-                <p hovers>Copyright @2020 All Right Reserved | This template is made with
+                <p hovers>Copyright @2021 All Right Reserved | This template is made with
                     lave by AakaarDevelopers
                 </p>
             </div>
@@ -555,8 +537,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 
-    
-    
+
+
     <!-- counter links  |||  upbutton -->
 
     <script type="text/javascript">
@@ -582,7 +564,7 @@
 
         // When the user clicks on the button , scroll to the top of the document
         function topfunction() {
-            document.body.scrollTop = 0;    //  For Safari
+            document.body.scrollTop = 0; //  For Safari
             document.documentElement.scrollTop = 0; //For  Chrome,  Firefox,    IE  and Opera
         }
     </script>
